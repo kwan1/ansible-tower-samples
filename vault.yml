@@ -1,3 +1,4 @@
+---
 - name: Read a secret from Vault
   hosts: all
   tasks:
