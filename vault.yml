@@ -1,0 +1,14 @@
+- name: Read a secret from Vault
+  hosts: all
+  tasks:
+    - name: Read from Vault
+      community.hashi_vault:
+        url: https://vault.development.corpgovrisk.net
+        path: secret/data/mysecrets
+        operation: read
+        token: "{{ vault_token }}"
+      register: vault_result
+
+    - name: Display the result
+      ansible.builtin.debug:
+        var: vault_result
