@@ -1,15 +1,15 @@
 ---
-- name: Read a secret from Vault
+- name: Example Playbook with Vault
   hosts: all
+  gather_facts: true
   tasks:
-    - name: Read from Vault
-      community.hashi_vault:
-        url: https://vault.development.corpgovrisk.net
-        path: secret/data/mysecrets
-        operation: read
-        token: "{{ vault_token }}"
+    - name: Read a secret from Vault
+      community.general.hashi_vault:
+        vault_identity: "vault"  # Replace with your AWX Vault credential name
+        path: "/v1/secret/data/secret/example"
       register: vault_result
 
-    - name: Display the result
-      ansible.builtin.debug:
+    - name: Debug Vault result
+      debug:
         var: vault_result
+
