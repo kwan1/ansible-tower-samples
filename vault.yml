@@ -3,7 +3,7 @@
   hosts: all
   gather_facts: true
   collections:
-    - Community.Hashi_Vault
+    - community.hashi_vault
   tasks:
     - name: Read a secret from Vault
       community.hashi_vault:
