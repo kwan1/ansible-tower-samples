@@ -1,11 +1,11 @@
 ---
 - name: Read Secret from HashiCorp Vault
-  hosts: all  # Adjust the target hosts as needed
+  hosts: ip-10-50-0-73.ap-southeast-2.compute.internal  # Replace with the appropriate AWX cluster node or worker node
   gather_facts: false
   tasks:
     - name: Read secret from Vault
       community.hashi_vault.read:
-        vault_identity: "vault"  # Replace with your AWX Vault credential name
+        vault_identity: "your_vault_credential"  # Replace with your AWX Vault credential name
         path: "/secret/data/my_secret"  # Replace with the actual path in Vault
       register: vault_result
 
