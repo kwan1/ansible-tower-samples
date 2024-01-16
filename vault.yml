@@ -2,9 +2,11 @@
 - name: Example Playbook with Vault
   hosts: all
   gather_facts: true
+  collections:
+    - Community.Hashi_Vault
   tasks:
     - name: Read a secret from Vault
-      community.general.hashi_vault:
+      community.hashi_vault:
         vault_identity: "vault"  # Replace with your AWX Vault credential name
         path: "/v1/secret/data/secret/example"
       register: vault_result
