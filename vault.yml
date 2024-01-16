@@ -5,11 +5,11 @@
   tasks:
     - name: Set options
       set_fact:
-      lookup_options: "secret=secret/data/example auth_method=aws_iam role_id=awx aws_iam_server_id=vault.int.ap-southeast-2.aws.core.development.corpgovrisk.net url=https://vault:8200 validate_certs=false"
+        lookup_options: "secret=secret/data/example auth_method=aws_iam role_id=awx aws_iam_server_id=vault.int.ap-southeast-2.aws.core.development.corpgovrisk.net url=https://vault:8200 validate_certs=false"
 
     - name: Secrets
       set_fact:
-      client_secrets: "{{ lookup('hashi_vault', lookup_options) }}"
+        client_secrets: "{{ lookup('hashi_vault', lookup_options) }}"
 
     - name: Debug Vault result
       debug:
