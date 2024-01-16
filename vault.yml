@@ -1,6 +1,6 @@
 ---
 - name: Example Playbook with Vault
-  hosts: native.local
+  hosts: all
   gather_facts: true
   tasks:
     - name: Set options
