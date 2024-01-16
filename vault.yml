@@ -4,9 +4,10 @@
   gather_facts: true
   collections:
     - community.hashi_vault
+    - community.general
   tasks:
     - name: Read a secret from Vault
-      community.hashi_vault:
+      community.general.hashi_vault:
         vault_identity: "vault"  # Replace with your AWX Vault credential name
         path: "/v1/secret/data/secret/example"
       register: vault_result
