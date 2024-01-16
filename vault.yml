@@ -1,15 +1,16 @@
 ---
-- name: Read Secret from HashiCorp Vault
-  hosts: ip-10-50-0-73.ap-southeast-2.compute.internal  # Replace with the appropriate AWX cluster node or worker node
-  gather_facts: false
+- name: Example Playbook with Vault
+  hosts: native.local
+  gather_facts: true
   tasks:
-    - name: Read secret from Vault
-      community.hashi_vault.read:
-        vault_identity: "your_vault_credential"  # Replace with your AWX Vault credential name
-        path: "/secret/data/my_secret"  # Replace with the actual path in Vault
-      register: vault_result
+    - name: Set options
+      set_fact:
+      lookup_options: "secret=secret/data/example auth_method=aws_iam role_id=awx aws_iam_server_id=vault.int.ap-southeast-2.aws.core.development.corpgovrisk.net url=https://vault:8200 validate_certs=false"
+
+    - name: Secrets
+      set_fact:
+      client_secrets: "{{ lookup('hashi_vault', lookup_options) }}"
 
     - name: Debug Vault result
       debug:
-        var: vault_result
-
+      var: client_secrets
