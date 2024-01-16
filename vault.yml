@@ -4,11 +4,9 @@
   gather_facts: true
   tasks:
    - name: Read a secret from Vault
-   - name: Secrets
-      set_fact:
-        global_secrets: "{{ lookup('hashi_vault', lookup_options) }}"
-        vault_identity: "vault"  # Replace with your AWX Vault credential name
-        path: "/v1/secret/data/secret/example"
+      community.general.hashi_vault:
+      vault_identity: "vault"  # Replace with your AWX Vault credential name
+      path: "/v1/secret/data/secret/example"
       register: vault_result
 
     - name: Debug Vault result
