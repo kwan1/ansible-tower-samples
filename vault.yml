@@ -1,12 +1,12 @@
 ---
-- name: Example Playbook with Vault
-  hosts: all
-  gather_facts: true
+- name: Read Secret from HashiCorp Vault
+  hosts: all  # Adjust the target hosts as needed
+  gather_facts: false
   tasks:
-   - name: Read a secret from Vault
-      community.general.hashi_vault:
-      vault_identity: "vault"  # Replace with your AWX Vault credential name
-      path: "/v1/secret/data/secret/example"
+    - name: Read secret from Vault
+      community.hashi_vault.read:
+        vault_identity: "vault"  # Replace with your AWX Vault credential name
+        path: "/secret/data/my_secret"  # Replace with the actual path in Vault
       register: vault_result
 
     - name: Debug Vault result
