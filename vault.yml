@@ -2,12 +2,9 @@
 - name: Example Playbook with Vault
   hosts: all
   gather_facts: true
-  collections:
-    - community.hashi_vault
-    - community.general
   tasks:
     - name: Read a secret from Vault
-      community.general.hashi_vault:
+        global_secrets: "{{ lookup('hashi_vault', lookup_options) }}"
         vault_identity: "vault"  # Replace with your AWX Vault credential name
         path: "/v1/secret/data/secret/example"
       register: vault_result
