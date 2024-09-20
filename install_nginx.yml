@@ -14,3 +14,12 @@
         name: nginx
         state: started
         enabled: yes
+
+    - name: Copy index.html to Nginx web directory
+      copy:
+        src: ./index.html
+        dest: /usr/share/nginx/html/index.html
+
+    - name: Print the IP address of the machine
+      debug:
+        msg: "Visit the website at http://{{ ansible_default_ipv4.address }}"
