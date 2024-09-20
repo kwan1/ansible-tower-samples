@@ -1,0 +1,10 @@
+---
+- hosts: centos.orb.local
+  become: yes
+  vars:
+    ansible_connection: local
+  tasks:
+    - name: Copy index.html to Nginx web directory
+      copy:
+        src: ./index.html
+        dest: /usr/share/nginx/html/index.html

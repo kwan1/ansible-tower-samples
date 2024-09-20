@@ -1,6 +1,6 @@
 ---
 - name: List IPs using AWX
-  hosts: all
+  hosts: centos.orb.local
   gather_facts: false
   tasks:
     - name: Add hosts dynamically

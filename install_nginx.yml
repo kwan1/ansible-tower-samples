@@ -1,0 +1,16 @@
+---
+- hosts: centos.orb.local
+  become: yes
+  vars:
+    ansible_connection: local
+  tasks:
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start and enable Nginx
+      service:
+        name: nginx
+        state: started
+        enabled: yes
